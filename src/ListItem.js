@@ -3,6 +3,7 @@ import React from 'react';
 // Returns a list item containing the experience, position I held, date, and description.
 var ListItem = React.createClass({
     render() {
+		console.log(this.props.data)
 		return(
 			<div className="col s12 m6 l3">
 			  <div className="card medium">

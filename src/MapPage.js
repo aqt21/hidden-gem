@@ -1,14 +1,16 @@
 // Page of blogs to show
+/* global google */
 import React from 'react';
 import './css/Map.css';
 import firebase from 'firebase';
 import $ from 'jquery';
 import MapItem from './MapItem';
+import ListItem from './ListItem';
 import PostBox from './PostBox';
 import FirebaseConfig from './Config';
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
-
+import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerWithLabel";
 
 
 
@@ -77,6 +79,12 @@ var MapPage = React.createClass({
 	  firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({uploadPicUrl: url}));
 	},
 	
+	handleMarkerClick(key){
+		console.log($("#" + key + "label"))
+		$("#" + key + "label").hidden = "false"
+		$("#" + key + "marker").padding = "15px"
+	},
+	
 	// Render a <MapItem> element for each element in the state
 	render() {
 		const MyMapComponent = withScriptjs(withGoogleMap((props) =>
@@ -86,9 +94,17 @@ var MapPage = React.createClass({
 		  >
 
 			{props.isMarkerShown && Object.keys(this.state.mapItems).map((d) => {
-			return <Marker key={d} position={{ lat: parseFloat(this.state.mapItems[d].latitude), lng: parseFloat(this.state.mapItems[d].longitude) }} />
-			console.log(this.state.mapItems[d].latitude)
-			console.log(this.state.mapItems[d].longitude)})}
+			return <MarkerWithLabel key={d}
+							id={d + "marker"}
+							position={{ lat: parseFloat(this.state.mapItems[d].latitude), lng: parseFloat(this.state.mapItems[d].longitude) }}
+							labelAnchor={{x:0,y:0}}
+							labelStyle={{backgroundColor: "white", fontSize: "24px", padding: "0px"}}
+							onClick={this.handleMarkerClick(d)}
+							>
+					<div id={d + "label"} hidden = "true"><ListItem user={this.props.user} key={d} productRef={d} data={this.state.mapItems[d]} handleTrash={this.removeProduct}/></div>
+					
+					</MarkerWithLabel>
+			})}
 		  </GoogleMap>
 		))
 		return (
