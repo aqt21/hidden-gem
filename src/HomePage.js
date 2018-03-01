@@ -4,6 +4,7 @@ import $ from 'jquery';
 import './css/Home.css';
 import firebase from 'firebase';
 
+
 // HomePage Component
 var HomePage = React.createClass({
 	getInitialState(){
@@ -31,7 +32,15 @@ var HomePage = React.createClass({
 
 		return (
 			<div className='container' id='home'>
-				
+    <div className="nav-wrapper">
+      <form>
+        <div className="input-field">
+          <input id="search" type="search" required />
+          <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
+          <i className="material-icons">close</i>
+        </div>
+      </form>
+    </div>
 			</div>
 		);
 	}
