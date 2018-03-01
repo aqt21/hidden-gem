@@ -46,25 +46,37 @@ var App = React.createClass({
 
 		// Return links and show anything inside the <App> component (children)
 		return (
+		
 				<div className='App'>
 					
 					<div id='nav'>
-						<div className='navbar'>
-							<Link className='link' activeClassName='active' to='/home'>Home</Link>
-							<Link className='link' activeClassName='active' to='/map'>Map</Link>
-							<Link className='link' activeClassName='active' to='/list'>List</Link>
-							<Link className='link' activeClassName='active' to='/profile'>Profile</Link>
-							{!this.state.user &&
-							<Link className='link' activeClassName='active' to='/sign-up'>Sign Up</Link>
-							}
-							{!this.state.user &&
-							<Link className='link' activeClassName='active' to='/sign-in'>Sign In</Link>
+						<ul id="dropdown1" className="dropdown-content">
+							{this.state.user &&
+							<li><Link className='link' activeClassName='active' to='/profile'>Profile</Link></li>
 							}
 							{this.state.user &&
-							<SignOut submit={this.signOut} />
+							<li><SignOut submit={this.signOut} /></li>
 							}
-							
-						</div>
+							{!this.state.user &&
+							<li><Link className='link' activeClassName='active' to='/sign-in'>Sign In</Link></li>
+							}
+							{!this.state.user &&
+							<li><Link className='link' activeClassName='active' to='/sign-up'>Sign Up</Link></li>
+							}
+
+						</ul>
+						<nav>
+						  <div className="nav-wrapper">
+							<a href="#!" className="brand-logo">Logo</a>
+							<ul className="right hide-on-med-and-down">
+							  <li><Link className='link' activeClassName='active' to='/home'>Home</Link></li>
+							  <li><Link className='link' activeClassName='active' to='/map'>Map</Link></li>
+							  <li><Link className='link' activeClassName='active' to='/list'>List</Link></li>
+							  <li><a className="dropdown-button" href="#!" data-activates="dropdown1">User</a></li>
+							</ul>
+						  </div>
+						</nav>
+				
 					</div>
 
 
