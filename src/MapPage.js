@@ -9,7 +9,7 @@ import FirebaseConfig from './Config';
 
 
 // BlogPage Component
-var BlogPage = React.createClass({
+var MapPage = React.createClass({
 	getInitialState(){
 		return{blogItems:[], fileName:"", isUploading:false, uploadPicUrl:""}
 	},
@@ -97,4 +97,4 @@ var BlogPage = React.createClass({
 	}
 });
 
-export default BlogPage;
+export default MapPage;

@@ -13,7 +13,7 @@ var StoreItem = React.createClass({
 				  <h5>{this.props.data.title}</h5>
 				  <p>{this.props.data.description.substring(0,33) + " ..."}</p>
 				  <br/>
-				  <p>Price: {this.props.data.price}</p>
+				  <p>Rating: {this.props.data.rating}</p>
 				  {(this.props.user ?
 					<i className="fa fa-trash trash" aria-hidden="true" onClick={this.props.handleTrash} id={this.props.productRef}></i>
 				  :false

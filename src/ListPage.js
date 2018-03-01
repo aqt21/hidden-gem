@@ -8,19 +8,19 @@ import FirebaseConfig from "./Config";
 import FileUploader from 'react-firebase-file-uploader'; 
 
 // StorePage Component
-var StorePage = React.createClass({
+var ListPage = React.createClass({
 	getInitialState(){
-		return{storeItems:[], fileName:"", isUploading:false, uploadPicUrl:"", currRefId:"", showInfo:false}
+		return{listItems:[], fileName:"", isUploading:false, uploadPicUrl:"", currRefId:"", showInfo:false}
 	},
 
 	// When component mounts, get the data and set the state of 'storeItems'
 	componentDidMount(){
 
-		this.storeRef = firebase.database().ref("Store");
+		this.storeRef = firebase.database().ref("Locations");
 		
 		this.storeRef.on("value", (snapshot)=> {
 			if(snapshot.val()){
-				this.setState({storeItems:snapshot.val()});
+				this.setState({listItems:snapshot.val()});
 			}
 		});
 		$('#store').animate({opacity: '1'}, "slow");
@@ -33,7 +33,9 @@ var StorePage = React.createClass({
 			title: event.target.elements["title"].value,
 			imgurl: this.state.uploadPicUrl,
 			description: event.target.elements["description"].value,
-			price: "$" + event.target.elements["price"].value
+			rating: event.target.elements["rating"].value,
+			latitude: event.target.elements["latitude"].value,
+			longitude: event.target.elements["longitude"].value
 		});
 		
 		this.setState({uploadPicUrl: "", fileName: ""});
@@ -86,17 +88,17 @@ var StorePage = React.createClass({
 								</div>
 								
 								<div className="card-image">
-									<img src={this.state.storeItems[currRef].imgurl} />
+									<img src={this.state.listItems[currRef].imgurl} />
 								</div>
 								<div className="card-stacked">
 									<div className="card-content">
-									<h2>{this.state.storeItems[currRef].title}</h2>
-									<p>{this.state.storeItems[currRef].description}</p>
+									<h2>{this.state.listItems[currRef].title}</h2>
+									<p>{this.state.listItems[currRef].description}</p>
 									<br />
-									<p>{"Price: " + this.state.storeItems[currRef].price}</p>
+									<p>{"Rating: " + this.state.listItems[currRef].rating + "/5"}</p>
 									</div>
 									<div className="card-action">
-										<a href="#">Buy Now</a>
+										<a href="#">More Info</a>
 									</div>
 								</div>
 							</div>
@@ -154,8 +156,8 @@ var StorePage = React.createClass({
 						)}
 						
 						<div className="row">
-						{Object.keys(this.state.storeItems).map((d) => {
-								return <StoreItem user={this.props.user} key={d} productRef={d} data={this.state.storeItems[d]} handleTrash={this.removeProduct} handleClick={this.showProductInfo}/>
+						{Object.keys(this.state.listItems).map((d) => {
+								return <StoreItem user={this.props.user} key={d} productRef={d} data={this.state.listItems[d]} handleTrash={this.removeProduct} handleClick={this.showProductInfo}/>
 							})}
 						</div>
 					</div>
@@ -170,4 +172,4 @@ var StorePage = React.createClass({
 	}
 });
 
-export default StorePage;
+export default ListPage;
