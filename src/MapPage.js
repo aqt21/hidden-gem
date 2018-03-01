@@ -6,6 +6,11 @@ import $ from 'jquery';
 import MapItem from './MapItem';
 import PostBox from './PostBox';
 import FirebaseConfig from './Config';
+import { compose, withProps } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+
+
+
 
 
 // MapPage Component
@@ -16,7 +21,7 @@ var MapPage = React.createClass({
 
 	// When component mounts, get the data and set the state of 'mapItems'
 	componentDidMount(){
-		this.mapRef = firebase.database().ref("Map");
+		this.mapRef = firebase.database().ref("Locations");
 		this.mapRef.on("value", (snapshot)=> {
 			if(snapshot.val()){
 				this.setState({mapItems:snapshot.val()});
@@ -74,24 +79,28 @@ var MapPage = React.createClass({
 	
 	// Render a <MapItem> element for each element in the state
 	render() {
-		var a = Object.keys(this.state.mapItems);
-		a.reverse();
+		const MyMapComponent = withScriptjs(withGoogleMap((props) =>
+		  <GoogleMap
+			defaultZoom={8}
+			defaultCenter={{ lat: 47, lng: -122 }}
+		  >
+
+			{props.isMarkerShown && Object.keys(this.state.mapItems).map((d) => {
+			return <Marker key={d} position={{ lat: parseFloat(this.state.mapItems[d].latitude), lng: parseFloat(this.state.mapItems[d].longitude) }} />
+			console.log(this.state.mapItems[d].latitude)
+			console.log(this.state.mapItems[d].longitude)})}
+		  </GoogleMap>
+		))
 		return (
-			<div className='container' id='map'>
-				{(this.props.user ?
-					<PostBox handleSubmit={this.createPost}
-						isUploading={this.state.isUploading}
-						handleUploadStart={this.handleUploadStart}
-						handleUploadError={this.handleUploadError}
-						handleUploadSuccess={this.handleUploadSuccess}
-						handleProgress={this.handleProgress}
-						filename={this.state.fileName}
+		//className='container' id='map'
+			<div >
+				  <MyMapComponent
+					  isMarkerShown = {true}
+					  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+					  loadingElement={<div style={{ height: `100%` }} />}
+					  containerElement={<div style={{ height: `800px` }} />}
+					  mapElement={<div style={{ height: `100%` }} />}
 					/>
-				:false)}
-				{a.map((d) => {
-					return <MapItem key={d} data={this.state.mapItems[d]} likePost={() => this.likePost(d)}
-					/>
-				})}
 			</div>
 		);
 	}
