@@ -1,28 +1,28 @@
 // Page of blogs to show
 import React from 'react';
-import './css/Blog.css';
+import './css/Map.css';
 import firebase from 'firebase';
 import $ from 'jquery';
-import BlogItem from './BlogItem';
+import MapItem from './MapItem';
 import PostBox from './PostBox';
 import FirebaseConfig from './Config';
 
 
-// BlogPage Component
+// MapPage Component
 var MapPage = React.createClass({
 	getInitialState(){
-		return{blogItems:[], fileName:"", isUploading:false, uploadPicUrl:""}
+		return{mapItems:[], fileName:"", isUploading:false, uploadPicUrl:""}
 	},
 
-	// When component mounts, get the data and set the state of 'blogItems'
+	// When component mounts, get the data and set the state of 'mapItems'
 	componentDidMount(){
-		this.blogRef = firebase.database().ref("Blog");
-		this.blogRef.on("value", (snapshot)=> {
+		this.mapRef = firebase.database().ref("Map");
+		this.mapRef.on("value", (snapshot)=> {
 			if(snapshot.val()){
-				this.setState({blogItems:snapshot.val()});
+				this.setState({mapItems:snapshot.val()});
 			}
 		});
-		$('#blog').animate({opacity: '1'}, "slow");
+		$('#map').animate({opacity: '1'}, "slow");
 	},
 	
 	 // Function to create a new post
@@ -32,7 +32,7 @@ var MapPage = React.createClass({
 		if (event.target.title.value !== "") {
 			// Get form info
 			var d = new Date();
-			this.blogRef.push({
+			this.mapRef.push({
 				title:event.target.title.value,
 				imgurl: this.state.uploadPicUrl,
 				content:event.target.content.value,
@@ -48,7 +48,7 @@ var MapPage = React.createClass({
 
     // Function to like a post
     likePost(postId) {
-        let ref = this.blogRef.child(postId);
+        let ref = this.mapRef.child(postId);
         ref.once('value').then(function(snapshot) {
             var newLikes = parseInt(snapshot.val().likes) + 1;
             // Update on firebase
@@ -72,12 +72,12 @@ var MapPage = React.createClass({
 	  firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({uploadPicUrl: url}));
 	},
 	
-	// Render a <BlogItem> element for each element in the state
+	// Render a <MapItem> element for each element in the state
 	render() {
-		var a = Object.keys(this.state.blogItems);
+		var a = Object.keys(this.state.mapItems);
 		a.reverse();
 		return (
-			<div className='container' id='blog'>
+			<div className='container' id='map'>
 				{(this.props.user ?
 					<PostBox handleSubmit={this.createPost}
 						isUploading={this.state.isUploading}
@@ -89,7 +89,7 @@ var MapPage = React.createClass({
 					/>
 				:false)}
 				{a.map((d) => {
-					return <BlogItem key={d} data={this.state.blogItems[d]} likePost={() => this.likePost(d)}
+					return <MapItem key={d} data={this.state.mapItems[d]} likePost={() => this.likePost(d)}
 					/>
 				})}
 			</div>

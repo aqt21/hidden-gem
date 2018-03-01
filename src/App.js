@@ -71,6 +71,7 @@ var App = React.createClass({
 							<Link className='link' activeClassName='active' to='/home'>Home</Link>
 							<Link className='link' activeClassName='active' to='/map'>Map</Link>
 							<Link className='link' activeClassName='active' to='/list'>List</Link>
+							<Link className='link' activeClassName='active' to='/profile'>Profile</Link>
 						</div>
 					</div>
 

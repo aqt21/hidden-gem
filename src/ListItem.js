@@ -1,7 +1,7 @@
 import React from 'react';
 
-// Returns a store item containing the experience, position I held, date, and description.
-var StoreItem = React.createClass({
+// Returns a list item containing the experience, position I held, date, and description.
+var ListItem = React.createClass({
     render() {
 		return(
 			<div className="col s12 m6 l3">
@@ -29,4 +29,4 @@ var StoreItem = React.createClass({
     }
 });
 
-export default StoreItem;
+export default ListItem;

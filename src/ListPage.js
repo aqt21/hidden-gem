@@ -1,35 +1,35 @@
-// Page of store items to show
+// Page of List items to show
 import React from 'react';
 import $ from 'jquery';
-import './css/Store.css';
-import StoreItem from './StoreItem';
+import './css/List.css';
+import ListItem from './ListItem';
 import firebase from "firebase";
 import FirebaseConfig from "./Config";
 import FileUploader from 'react-firebase-file-uploader'; 
 
-// StorePage Component
+// ListPage Component
 var ListPage = React.createClass({
 	getInitialState(){
 		return{listItems:[], fileName:"", isUploading:false, uploadPicUrl:"", currRefId:"", showInfo:false}
 	},
 
-	// When component mounts, get the data and set the state of 'storeItems'
+	// When component mounts, get the data and set the state of 'listItems'
 	componentDidMount(){
 
-		this.storeRef = firebase.database().ref("Locations");
+		this.listRef = firebase.database().ref("Locations");
 		
-		this.storeRef.on("value", (snapshot)=> {
+		this.listRef.on("value", (snapshot)=> {
 			if(snapshot.val()){
 				this.setState({listItems:snapshot.val()});
 			}
 		});
-		$('#store').animate({opacity: '1'}, "slow");
+		$('#list').animate({opacity: '1'}, "slow");
 	},
 	
 	createProduct(event) {
 		event.preventDefault();
 		
-		this.storeRef.push({
+		this.listRef.push({
 			title: event.target.elements["title"].value,
 			imgurl: this.state.uploadPicUrl,
 			description: event.target.elements["description"].value,
@@ -69,17 +69,17 @@ var ListPage = React.createClass({
 	},
 	
 	removeProduct(event) {
-		this.storeRef.child(event.target.id).remove();
+		this.listRef.child(event.target.id).remove();
 	},
 	
-	// Render a <StoreItem> element for each element in the state
+	// Render a <ListItem> element for each element in the state
 	render() {
 		
 		let currRef = this.state.currRefId;
 		
 		return (
 			<div>
-				<div id='store'>
+				<div id='list'>
 					<div className='container'>
 						{(this.state.showInfo ?
 							<div className="card horizontal" id="productinfo">
@@ -157,7 +157,7 @@ var ListPage = React.createClass({
 						
 						<div className="row">
 						{Object.keys(this.state.listItems).map((d) => {
-								return <StoreItem user={this.props.user} key={d} productRef={d} data={this.state.listItems[d]} handleTrash={this.removeProduct} handleClick={this.showProductInfo}/>
+								return <ListItem user={this.props.user} key={d} productRef={d} data={this.state.listItems[d]} handleTrash={this.removeProduct} handleClick={this.showProductInfo}/>
 							})}
 						</div>
 					</div>
