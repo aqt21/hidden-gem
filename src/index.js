@@ -7,6 +7,8 @@ import HomePage from './HomePage';
 import MapPage from './MapPage';
 import ListPage from './ListPage';
 import ProfilePage from './ProfilePage';
+import SignUpPage from './SignUpPage';
+import SignInPage from './SignInPage';
 
 // Render DOM
 ReactDOM.render(
@@ -17,6 +19,8 @@ ReactDOM.render(
                 <Route path='map' component={MapPage}/>
 				<Route path='list' component={ListPage}/>
 				<Route path='profile' component={ProfilePage}/>
+				<Route path='sign-up' component={SignUpPage}/>
+				<Route path='sign-in' component={SignInPage}/>
             </Route>
         </Router>,
   document.getElementById('root')

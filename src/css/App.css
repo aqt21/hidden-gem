@@ -10,31 +10,19 @@
 }
 
 body {
-	background-image: url('bakery-background.jpg');
-	background-repeat: repeat;
-	background-size: 500px 500px;
 	background-color: #fcfcfc;
 }
 
-#nav {
-	background-color: white;
-	border-bottom: 1px solid #d3d3d3;
+#nav, footer, .btn {
+	background-color: #6FCF97 !important;
 }
 
 .navbar {
-    height: 50px;
-    padding: 14px 20px 0 20px;
+    height: 80px;
+    padding: 30px 20px 0 20px;
     display: flex;
 	justify-content: space-between;
 	margin: 0 20px;
-}
-
-footer {
-	padding: 15px 0 !important;
-}
-
-#inputs{
-	display:none;
 }
 
 a.link, .content a, .homelink {
@@ -42,30 +30,18 @@ a.link, .content a, .homelink {
 }
 
 a.link {
-    color: #b5b5b5;
+    color: #ffffff;
 	transition: 0.6s ease;
 }
 
-h1 {
-	color: white;
-	font-size: 36px !important;
-	font-weight: 100 !important;
-	margin: 0 !important;
-	padding: 30px 0;
-	font-family: Lobster;
-}
- 
-h5, h6, div, .navbar {
-	font-family: Roboto, 'Century Gothic', sans-serif;
-	text-align: center;
-}
-
-h1, footer, .btn {
-	background-color: #5B2C6F !important;
-}
-
-a.link.active, #blog i, #blog h5, .store-item h5, .about-us-item h5 {
+a.link.active {
 	color: #5B2C6F;
+}
+
+
+h5, h6, div, .navbar {
+	font-family: Roboto, 'Century Gothic', 'Comic Sans';
+	text-align: center;
 }
 
 label.active {
@@ -83,9 +59,6 @@ input[type=text]:focus:not([readonly]), input[type=email]:focus, input[type=pass
     box-shadow: 0 1px 0 0 #BB6B25 !important;
 }
 
-#adminDiv {
-	display:none;
-}
 
 #signin div {
 	color: white;
@@ -99,15 +72,12 @@ input[type=text]:focus:not([readonly]), input[type=email]:focus, input[type=pass
 
 /* Screen sizes */
 @media (min-width: 768px) {
-	h1 {
-		font-size: 60.9px !important;
-	}
 	
 	.navbar {
 		display: block;
 	}
 	
 	a.link {
-		margin: 100px;
+		margin: 30px;
 	}
 }

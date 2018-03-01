@@ -1,16 +1,13 @@
-// Sign up
+// Sign in
 import React from 'react';
 import $ from 'jquery';
 
-var SignIn = React.createClass({
-    show(){
-        $("#inputs").toggle();
-    },
-
+var SignInItem = React.createClass({
+	
     render() {
         return(
             <div className="container" id="signin">
-                <div onClick={this.show}>Administrator Sign-In</div>
+			<h3>SIGN IN</h3>
                 <form onSubmit={this.props.submit} className="col s4 authenticate" id="sign-up">
                     <div className="row" id="inputs">
 						<input id="email" type="email" placeholder="Email" className="validate form col s4" />
@@ -25,4 +22,4 @@ var SignIn = React.createClass({
     }
 });
 
-export default SignIn;
+export default SignInItem;

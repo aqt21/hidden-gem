@@ -6,8 +6,8 @@ import '../node_modules/font-awesome/css/font-awesome.css';
 import '../node_modules/materialize-css/css/ghpages-materialize.css';
 import firebase from 'firebase';
 import FirebaseConfig from './Config';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
+import SignUpPage from './SignUpPage';
+import SignInPage from './SignInPage';
 import SignOut from './SignOut';
 import Materialize from "materialize-css";
 
@@ -32,22 +32,6 @@ var App = React.createClass({
 		
 	},
 
-	signIn(event){
-		event.preventDefault();
-
-		let email = event.target.elements['email'].value;
-		let password = event.target.elements['password'].value;
-
-
-		//sign in
-		firebase.auth().signInWithEmailAndPassword(email,password)
-		.then((user) => {
-			this.setState({user:firebase.auth().currentUser});
-		})
-		//clear form
-		event.target.reset();
-	},
-
 	signOut(){
 		firebase.auth().signOut().then(() => {
 			this.setState({user:null});
@@ -63,8 +47,6 @@ var App = React.createClass({
 		// Return links and show anything inside the <App> component (children)
 		return (
 				<div className='App'>
-					<h1>Hidden Gem</h1>
-					
 					
 					<div id='nav'>
 						<div className='navbar'>
@@ -72,6 +54,16 @@ var App = React.createClass({
 							<Link className='link' activeClassName='active' to='/map'>Map</Link>
 							<Link className='link' activeClassName='active' to='/list'>List</Link>
 							<Link className='link' activeClassName='active' to='/profile'>Profile</Link>
+							{!this.state.user &&
+							<Link className='link' activeClassName='active' to='/sign-up'>Sign Up</Link>
+							}
+							{!this.state.user &&
+							<Link className='link' activeClassName='active' to='/sign-in'>Sign In</Link>
+							}
+							{this.state.user &&
+							<SignOut submit={this.signOut} />
+							}
+							
 						</div>
 					</div>
 
@@ -80,14 +72,6 @@ var App = React.createClass({
 						{childrenWithProps}
 					</div>
 					
-					<footer>
-						{!this.state.user &&
-							<SignIn submit={this.signIn} />
-						}
-						{this.state.user &&
-							<SignOut submit={this.signOut} />
-						}
-					</footer>
 				</div>
 		);
 	}

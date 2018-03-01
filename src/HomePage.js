@@ -1,8 +1,6 @@
 // Page of information about me
 import React from 'react';
 import $ from 'jquery';
-import HomeItem from './HomeItem';
-import AboutUsItem from './AboutUsItem';
 import './css/Home.css';
 import firebase from 'firebase';
 
@@ -33,9 +31,7 @@ var HomePage = React.createClass({
 
 		return (
 			<div className='container' id='home'>
-				//<AboutUsItem info={this.state.aboutUs.aboutUs}/>
-				//<HomeItem key={'img1'} img={'imgs/bread.jpg'} page={'View Our Blog'} link={'/blog'} text={"Our blog is continually updated with the delicious bread-related posts!"}/>
-				//<HomeItem key={'img2'} img={'imgs/bread2.jpg'} page={'Browse the Store'} link={'/store'} text={'Would you like to purchase some nutritional and healthy breads for you and your family?'}/>
+				
 			</div>
 		);
 	}
