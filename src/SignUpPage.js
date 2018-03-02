@@ -17,7 +17,9 @@ var SignUpPage = React.createClass({
 		.then((user) => {
 			this.setState({user:firebase.auth().currentUser});
 		})
+
 		//clear form
+
 		event.target.reset();
 		firebase.auth().onAuthStateChanged(user => {
 		  if(user) {

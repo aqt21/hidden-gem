@@ -41,6 +41,7 @@ var HomePage = React.createClass({
 			  minLength: 1
 			}
 		  });
+
 	},
 	
 	// Render a <HomeItem> element
@@ -57,6 +58,7 @@ var HomePage = React.createClass({
 				</div>
 			  </form>
 			<div className="chips chips-autocomplete"></div>
+
 			</div>
 		);
 	}

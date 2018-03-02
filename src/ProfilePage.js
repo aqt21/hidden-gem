@@ -31,7 +31,9 @@ var ProfilePage = React.createClass({
 
 		return (
 			<div className='container' id='profile'>
-				<div> Hello </div>
+				<div id='profile-header'> User Information </div>
+				<div id='favorites'> Favorite Gems </div>
+				<div id='saved'> Saved Gems </div>
 				
 			</div>
 		);

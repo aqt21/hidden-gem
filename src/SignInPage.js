@@ -6,7 +6,6 @@ import firebase from 'firebase';
 import FirebaseConfig from './Config';
 
 var SignInPage = React.createClass({
-
 	signIn(event){
 		event.preventDefault();
 
@@ -20,7 +19,6 @@ var SignInPage = React.createClass({
 			this.setState({user:firebase.auth().currentUser});
 		})
 		//clear form
-		
 		event.target.reset();
 		firebase.auth().onAuthStateChanged(user => {
 		  if(user) {
@@ -29,11 +27,19 @@ var SignInPage = React.createClass({
 		});
 	},
 
+
+	},
+	
+	reload() {
+		window.location.reload();
+	},
+	
     render() {
         return(
-            <div className="container" id="signin">
+		
+		<div className="container" id="signin">
                 <SignInItem submit={this.signIn} />
-            </div>
+        </div>
         )
     }
 });

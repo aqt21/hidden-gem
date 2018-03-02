@@ -4,7 +4,7 @@ import React from 'react';
 var SignOut = React.createClass({
     render() {
         return(
-            <button onClick={this.props.submit} className="btn btn-primary sign-out">Sign Out</button>
+            <a onClick={this.props.submit}>Sign Out</a>
         )
     }
 });

@@ -14,6 +14,7 @@ var SignInItem = React.createClass({
 						<div className="col s1"></div>
 						<input id="password" type="password" placeholder="Password" className="validate form col s4" />
 						<button id="signin-button" className="btn btn-primary">Sign In</button>
+						
                     </div>
                     
                 </form>

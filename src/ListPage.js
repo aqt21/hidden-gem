@@ -110,17 +110,32 @@ var ListPage = React.createClass({
 							<form className="col s12 active" onSubmit = {this.createProduct}>
 								<div className="input-field col s6">
 									<input id="title" type="text"></input>
-									<label htmlFor="title">Product Title</label>
+									<label htmlFor="title">Title</label>
 								</div>
 								
 								<div className="input-field col s6" >
 									<textarea className="materialize-textarea" id="description" type="text"></textarea>
-									<label htmlFor="description">Product Description</label>
+									<label htmlFor="description">Description</label>
 								</div>
 								
 								<div className="input-field col s6">
-									<input id="price" type="text"></input>
-									<label htmlFor="price">Product Price</label>
+									<input id="rating" type="text"></input>
+									<label htmlFor="price">Rating</label>
+								</div>
+								
+								<div className="input-field col s6">
+									<input id="latitude" type="text"></input>
+									<label htmlFor="price">Latitude</label>
+								</div>
+								
+								<div className="input-field col s6">
+									<input id="longitude" type="text"></input>
+									<label htmlFor="price">Longitude</label>
+								</div>
+								
+								<div className="input-field col s6">
+									<input id="filters" type="text"></input>
+									<label htmlFor="price">Filters</label>
 								</div>
 								
 								<div className="input-field col s6">
@@ -149,7 +164,7 @@ var ListPage = React.createClass({
 								</div>
 								
 								<br />
-								<button id="productsubmit" type="submit" disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Post Product For Sale</button>
+								<button id="productsubmit" type="submit" disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Post the Hidden Gem</button>
 							</form>
 						</div>
 						: false
