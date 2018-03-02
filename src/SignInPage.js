@@ -22,18 +22,11 @@ var SignInPage = React.createClass({
 		event.target.reset();
 		firebase.auth().onAuthStateChanged(user => {
 		  if(user) {
-			window.location = './home'; //After successful login, user will be redirected to home.html
+			window.location = './#/home'; //After successful login, user will be redirected to home.html
 		  }
 		});
 	},
 
-
-	},
-	
-	reload() {
-		window.location.reload();
-	},
-	
     render() {
         return(
 		
