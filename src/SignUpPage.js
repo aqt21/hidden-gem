@@ -17,8 +17,13 @@ var SignUpPage = React.createClass({
 		.then((user) => {
 			this.setState({user:firebase.auth().currentUser});
 		})
+		.then(this.reload)
+		.then(this.props.router.push('/home'))
 		//clear form
-		event.target.reset();
+		//event.target.reset();
+	},
+	reload() {
+		window.location.reload();
 	},
 
     render() {

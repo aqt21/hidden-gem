@@ -6,6 +6,7 @@ import firebase from 'firebase';
 import FirebaseConfig from './Config';
 
 var SignInPage = React.createClass({
+	
 	signIn(event){
 		event.preventDefault();
 
@@ -18,15 +19,23 @@ var SignInPage = React.createClass({
 		.then((user) => {
 			this.setState({user:firebase.auth().currentUser});
 		})
+		.then(this.reload)
+		.then(this.props.router.push('/home'))
 		//clear form
-		event.target.reset();
-	},
+		//event.target.reset();
 
+	},
+	
+	reload() {
+		window.location.reload();
+	},
+	
     render() {
         return(
-            <div className="container" id="signin">
+		
+		<div className="container" id="signin">
                 <SignInItem submit={this.signIn} />
-            </div>
+        </div>
         )
     }
 });
