@@ -6,6 +6,7 @@ import firebase from 'firebase';
 import FirebaseConfig from './Config';
 
 var SignInPage = React.createClass({
+
 	signIn(event){
 		event.preventDefault();
 
@@ -19,7 +20,13 @@ var SignInPage = React.createClass({
 			this.setState({user:firebase.auth().currentUser});
 		})
 		//clear form
+		
 		event.target.reset();
+		firebase.auth().onAuthStateChanged(user => {
+		  if(user) {
+			window.location = './home'; //After successful login, user will be redirected to home.html
+		  }
+		});
 	},
 
     render() {

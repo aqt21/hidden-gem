@@ -3,13 +3,14 @@ import React from 'react';
 import './css/App.css';
 import { Link } from 'react-router';
 import '../node_modules/font-awesome/css/font-awesome.css';
-import '../node_modules/materialize-css/css/ghpages-materialize.css';
+import '../node_modules/materialize-css/dist/css/materialize.css';
 import firebase from 'firebase';
 import FirebaseConfig from './Config';
 import SignUpPage from './SignUpPage';
 import SignInPage from './SignInPage';
 import SignOut from './SignOut';
 import Materialize from "materialize-css";
+import '../node_modules/material-icons/css/material-icons.css';
 
 var App = React.createClass({
 	getInitialState(){
