@@ -7,12 +7,21 @@
 	cursor: pointer;
 }
 
+
 #cardimg {
 	height: 200px;
 }
 
+
 .card-content {
 	padding-top: 5px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+}
+
+.chip {
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .exit {
@@ -20,11 +29,21 @@
 	margin: 5px;
 }
 
+.cardInfo {
+	padding-top: 30px;
+}
+
 #exitcontainer{
 	position: absolute;
 	top: 5%;
 	left: 95%;
 	z-index: 900;
+}
+
+.cardTitle {
+	display: inline-block;
+	float: left;
+	padding-left: 5px;
 }
 
 #exitcontainer > label {
@@ -49,6 +68,11 @@
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
+}
+
+p {
+	font-size: 13px;
+	padding-left: 5px;
 }
 
 .trash {
@@ -87,6 +111,43 @@ i {
 	z-index: 999;
 }
 
+.stackedCardTitle {
+	padding-top: 10px !important;
+}
+
 .submit {
 	z-index: 0;
+}
+
+.heart {
+  background-color: red;
+  display: inline-block;
+  float: right;
+  height: 10px;
+  margin: 0 10px;
+  margin-top: 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 10px;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: red;
+  border-radius: 50%;
+  height: 10px;
+  position: absolute;
+  width: 10px;
+}
+
+.heart:before {
+  top: -5px;
+  left: 0;
+}
+
+.heart:after {
+  left: 5px;
+  top: 0;
 }
