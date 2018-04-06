@@ -9,8 +9,8 @@ import ListItem from './ListItem';
 import PostBox from './PostBox';
 import FirebaseConfig from './Config';
 import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
-import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerWithLabel";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+
 
 
 
@@ -87,32 +87,49 @@ var MapPage = React.createClass({
 	
 	// Render a <MapItem> element for each element in the state
 	render() {
-		const MyMapComponent = withScriptjs(withGoogleMap((props) =>
+		const { compose, withProps, withStateHandlers } = require("recompose");
+
+		const {
+		  withScriptjs,
+		  withGoogleMap,
+		  GoogleMap,
+		  Marker,
+		  InfoWindow,
+		} = require("react-google-maps");
+
+		const MapWithAMakredInfoWindow = compose(
+		  withStateHandlers(() => ({
+			isOpen: false,
+		  }), {
+			onToggleOpen: ({ isOpen }) => () => ({
+			  isOpen: !isOpen,
+			})
+		  }),
+		  withScriptjs,
+		  withGoogleMap
+		)(props =>
 		  <GoogleMap
 			defaultZoom={8}
 			defaultCenter={{ lat: 47, lng: -122 }}
 		  >
-
-			{props.isMarkerShown && Object.keys(this.state.mapItems).map((d) => {
-			return <MarkerWithLabel key={d}
-							id={d + "marker"}
-							position={{ lat: parseFloat(this.state.mapItems[d].latitude), lng: parseFloat(this.state.mapItems[d].longitude) }}
-							labelAnchor={{x:0,y:0}}
-							labelStyle={{backgroundColor: "white", fontSize: "24px", padding: "0px"}}
-							onClick={this.handleMarkerClick(d)}
-							>
-					<div id={d + "label"} hidden = "true"><ListItem user={this.props.user} key={d} productRef={d} data={this.state.mapItems[d]} handleTrash={this.removeProduct}/></div>
-					
-					</MarkerWithLabel>
-			})}
+		  {Object.keys(this.state.mapItems).map((d) => {
+			return (<Marker
+			  key={d}
+			  position={{ lat: this.state.mapItems[d].latitude, lng: this.state.mapItems[d].longitude}}
+			  onClick={props.onToggleOpen}
+			>
+			  {props.isOpen && <InfoWindow key={d} onCloseClick={props.onToggleOpen}>
+			  </InfoWindow>}
+			</Marker>)
+		  })}
 		  </GoogleMap>
-		))
+		)
 		return (
 		//className='container' id='map'
 			<div >
-				  <MyMapComponent
+				  <MapWithAMakredInfoWindow
 					  isMarkerShown = {true}
-					  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+					  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEm_NvS2jiGeyWkLWREjPhKW43h1QZAu0"
 					  loadingElement={<div style={{ height: `100%` }} />}
 					  containerElement={<div style={{ height: `800px` }} />}
 					  mapElement={<div style={{ height: `100%` }} />}

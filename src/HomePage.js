@@ -5,7 +5,6 @@ import './css/Home.css';
 import firebase from 'firebase';
 import Materialize from "materialize-css";
 
-
 // HomePage Component
 var HomePage = React.createClass({
 	getInitialState(){
@@ -26,7 +25,23 @@ var HomePage = React.createClass({
 		console.log(this.state.aboutUs);
 		
 		$('#home').animate({opacity: '1'}, "slow");
-		
+		 $('.chips').material_chip();
+		  $('.chips-autocomplete').material_chip({
+			autocompleteOptions: {
+			  data: {
+				'Waterfall': null,
+				'Restaurant': null,
+				'Art': null,
+				'Outdoors': null,
+				'Indoors': null,
+				'24 hours': null,
+				'Family': null
+			  },
+			  limit: Infinity,
+			  minLength: 1
+			}
+		  });
+
 	},
 	
 	// Render a <HomeItem> element
@@ -34,13 +49,16 @@ var HomePage = React.createClass({
 
 		return (
 			<div className='container' id='home'>
-				  <form>
-					<div className="input-field">
-					  <input id="search" type="search" required />
-					  <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
-					  <i className="material-icons">close</i>
-					</div>
-				  </form>
+			<form>
+				<div className="input-field">
+				  <input id="search" type="search" required />
+				  <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
+
+				  <i className="material-icons">close</i>
+				</div>
+			  </form>
+			<div className="chips chips-autocomplete"></div>
+
 			</div>
 		);
 	}

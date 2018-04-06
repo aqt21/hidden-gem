@@ -17,13 +17,15 @@ var SignUpPage = React.createClass({
 		.then((user) => {
 			this.setState({user:firebase.auth().currentUser});
 		})
-		.then(this.reload)
-		.then(this.props.router.push('/home'))
+
 		//clear form
-		//event.target.reset();
-	},
-	reload() {
-		window.location.reload();
+
+		event.target.reset();
+		firebase.auth().onAuthStateChanged(user => {
+		  if(user) {
+			window.location = './#/home'; //After successful login, user will be redirected to home.html
+		  }
+		});
 	},
 
     render() {
