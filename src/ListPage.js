@@ -92,10 +92,14 @@ var ListPage = React.createClass({
 								</div>
 								<div className="card-stacked">
 									<div className="card-content">
-									<h2>{this.state.listItems[currRef].title}</h2>
+									<h4 className="stackedCardTitle"><b>{this.state.listItems[currRef].title}</b></h4>
 									<p>{this.state.listItems[currRef].description}</p>
 									<br />
 									<p>{"Rating: " + this.state.listItems[currRef].rating + "/5"}</p>
+									<br />
+									<p className="chip">Tag Example</p>
+									<p className="chip">Tag Example</p>
+									<p className="chip">Tag Example</p>
 									</div>
 									<div className="card-action">
 										<a href="#">More Info</a>
@@ -110,32 +114,17 @@ var ListPage = React.createClass({
 							<form className="col s12 active" onSubmit = {this.createProduct}>
 								<div className="input-field col s6">
 									<input id="title" type="text"></input>
-									<label htmlFor="title">Title</label>
+									<label htmlFor="title">Product Title</label>
 								</div>
 								
 								<div className="input-field col s6" >
 									<textarea className="materialize-textarea" id="description" type="text"></textarea>
-									<label htmlFor="description">Description</label>
+									<label htmlFor="description">Product Description</label>
 								</div>
 								
 								<div className="input-field col s6">
-									<input id="rating" type="text"></input>
-									<label htmlFor="price">Rating</label>
-								</div>
-								
-								<div className="input-field col s6">
-									<input id="latitude" type="text"></input>
-									<label htmlFor="price">Latitude</label>
-								</div>
-								
-								<div className="input-field col s6">
-									<input id="longitude" type="text"></input>
-									<label htmlFor="price">Longitude</label>
-								</div>
-								
-								<div className="input-field col s6">
-									<input id="filters" type="text"></input>
-									<label htmlFor="price">Filters</label>
+									<input id="price" type="text"></input>
+									<label htmlFor="price">Product Price</label>
 								</div>
 								
 								<div className="input-field col s6">
@@ -164,7 +153,7 @@ var ListPage = React.createClass({
 								</div>
 								
 								<br />
-								<button id="productsubmit" type="submit" disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Post the Hidden Gem</button>
+								<button id="productsubmit" type="submit" disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Post Product For Sale</button>
 							</form>
 						</div>
 						: false
