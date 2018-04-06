@@ -6,6 +6,7 @@ import './css/index.css';
 import HomePage from './HomePage';
 import MapPage from './MapPage';
 import ListPage from './ListPage';
+import ModPage from './ModPage';
 import ProfilePage from './ProfilePage';
 import SignUpPage from './SignUpPage';
 import SignInPage from './SignInPage';
@@ -21,6 +22,7 @@ ReactDOM.render(
 				<Route path='profile' component={ProfilePage}/>
 				<Route path='sign-up' component={SignUpPage}/>
 				<Route path='sign-in' component={SignInPage}/>
+				<Route path='mod' component={ModPage}/>
             </Route>
         </Router>,
   document.getElementById('root')

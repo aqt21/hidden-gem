@@ -73,6 +73,7 @@ var App = React.createClass({
 							  <li><Link className='link' activeClassName='active' to='/home'>Home</Link></li>
 							  <li><Link className='link' activeClassName='active' to='/map'>Map</Link></li>
 							  <li><Link className='link' activeClassName='active' to='/list'>List</Link></li>
+							   <li><Link className='link' activeClassName='active' to='/mod'>Mod</Link></li>
 							  <li><a className="dropdown-button" href="#!" data-activates="dropdown1"><i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></a></li>
 							</ul>
 						  </div>
