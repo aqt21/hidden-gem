@@ -11,8 +11,9 @@ var ListItem = React.createClass({
 				  <img id="cardimg" src={this.props.data.imgurl} />
 				</div>
 				<div className="card-content">
-				  <h5>{this.props.data.title}</h5>
-				  <p>{this.props.data.description.substring(0,50) + " ..."}</p>
+				  <h6 className="cardTitle left-align"><b>{this.props.data.title}</b></h6>
+				  <div className="heart right-align"></div>
+				  <p className="cardInfo left-align">{this.props.data.description.substring(0,75) + " ..."}</p>
 				  <br/>
 				  <p>Rating: {this.props.data.rating}</p>
 				  {(this.props.user ?
