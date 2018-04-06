@@ -12,20 +12,32 @@ import Materialize from "materialize-css";
 // ModPage Component
 var ModPage = React.createClass({
 	getInitialState(){
-		return{listItems:[], fileName:"", isUploading:false, uploadPicUrl:"", currRefId:"", showInfo:false}
+		return{listItems:[], fileName:"", isUploading:false, uploadPicUrl:"", currRefId:"", showInfo:false, currTab: "Pending Review"}
 	},
 
 	// When component mounts, get the data and set the state of 'listItems'
 	componentDidMount(){
-
-		this.listRef = firebase.database().ref("Pending Review");
-		
+		this.listRef = firebase.database().ref(this.state.currTab);
 		this.listRef.on("value", (snapshot)=> {
 			if(snapshot.val()){
 				this.setState({listItems:snapshot.val()});
 			}
 		});
 		$('#list').animate({opacity: '1'}, "slow");
+	},
+	
+		
+		
+	componentDidUpdate(prevProps, prevState) {
+		if(prevState.currTab != this.state.currTab){
+		this.listRef = firebase.database().ref(this.state.currTab);
+		this.listRef.on("value", (snapshot)=> {
+			if(snapshot.val()){
+				this.setState({listItems:snapshot.val()});
+			}
+		});
+		$('#list').animate({opacity: '1'}, "slow");
+		}
 	},
 	
 	saveChanges(event) {
@@ -69,6 +81,15 @@ var ModPage = React.createClass({
 		this.setState({showInfo:false});
 	},
 	
+	handlePending(){
+		this.setState({currTab: "Pending Review"});
+	},
+	handleApproved(){
+		this.setState({currTab: "Locations"});
+	},
+	handleDiscarded(){
+		this.setState({currTab: "Discarded"});
+	},
 	removeProduct(event) {
 		this.listRef.child(event.target.id).remove();
 	},
@@ -86,6 +107,9 @@ var ModPage = React.createClass({
 			<div>
 				<div id='list'>
 					<div className='container'>
+						<a className="waves-effect waves-light btn-large" onClick={() => this.handlePending()}>Pending Review</a>
+						<a className="waves-effect waves-light btn-large" onClick={() => this.handleApproved()}>Approved</a>
+						<a className="waves-effect waves-light btn-large" onClick={() => this.handleDiscarded()}>Discarded</a>
 						{(this.state.showInfo ?
 							<div className="card horizontal" id="productinfo">
 							<div id="exitcontainer" onClick={this.hideProduct}>
