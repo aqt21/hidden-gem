@@ -1,5 +1,9 @@
 /* Home Page */
 
+body {
+		background-image: url(../../imgs/Hurricane.jpg);
+}
+
 #home{
 	padding:30px;
 	width:100%;
