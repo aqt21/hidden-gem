@@ -1,4 +1,5 @@
 // Page of List items to show
+import { Link } from 'react-router';
 import React from 'react';
 import $ from 'jquery';
 import './css/List.css';
@@ -6,6 +7,7 @@ import ListItem from './ListItem';
 import firebase from "firebase";
 import FirebaseConfig from "./Config";
 import FileUploader from 'react-firebase-file-uploader'; 
+import Materialize from "materialize-css";
 
 // ModPage Component
 var ModPage = React.createClass({
@@ -28,8 +30,7 @@ var ModPage = React.createClass({
 	
 	saveChanges(event) {
 		event.preventDefault();
-		
-		this.listRef.push({
+		firebase.database().ref(this.currRefId).update({
 			title: event.target.elements["title"].value,
 			imgurl: this.state.uploadPicUrl,
 			description: event.target.elements["description"].value,
@@ -72,6 +73,10 @@ var ModPage = React.createClass({
 		this.listRef.child(event.target.id).remove();
 	},
 	
+	changeText(event){
+		Materialize.updateTextFields();       
+    },
+	
 	// Render a <ListItem> element for each element in the state
 	render() {
 		
@@ -86,14 +91,14 @@ var ModPage = React.createClass({
 							<div id="exitcontainer" onClick={this.hideProduct}>
 									<i className="fa fa-times exit" aria-hidden="true"></i>
 							</div>
-							<form className="col s12 active" onSubmit = {this.saveChanges}>
+							<form className="col s12" onSubmit = {this.saveChanges}>
 								
 								<div className="card-stacked">
 								<div className="card-content">
 									<div className="card-image">
 										<img src={this.state.listItems[currRef].imgurl} />
 									</div>
-									<div className="input-field col s6">
+									<div className="input-field col s12">
 										<FileUploader
 											className="file-path validate"
 											id="file-uploader"
@@ -118,40 +123,50 @@ var ModPage = React.createClass({
 										)}							
 									</div>
 									
-									<div className="input-field col s6">
-										<input id="title" type="text" value={this.state.listItems[currRef].title}></input>
+									 <br/>
+									<div className="row">
+									<div className="input-field col s12">
+										<input value={this.state.listItems[currRef].title} id="title" type="text" onChange={this.changeText} />
 										<label className="active" htmlFor="title">Title</label>
+										
 									</div>
-
-									<div className="input-field col s6" >
-										<textarea className="materialize-textarea" id="description" type="text" value={this.state.listItems[currRef].description}></textarea>
+									</div>
+									
+									<div className="row">
+									<div className="input-field col s12" >
+										<textarea className="materialize-textarea" id="description" type="text" value={this.state.listItems[currRef].description} onChange={this.changeText} />
 										<label className="active" htmlFor="description">Description</label>
 									</div>
+									</div>
 									
-									<div className="input-field col s6">
-										<input id="rating" type="text" value={this.state.listItems[currRef].rating}></input>
+									<div className="row">
+									<div className="input-field col s12">
+										<input id="rating" type="text" value={this.state.listItems[currRef].rating} onChange={this.changeText} />
 										<label className="active" htmlFor="price">Rating</label>
 									</div>
+									</div>
 									
+									<div className="row">
 									<div className="input-field col s6">
-										<input id="latitude" type="text" value={this.state.listItems[currRef].latitude}></input>
+										<input id="latitude" type="text" value={this.state.listItems[currRef].latitude} onChange={this.changeText} />
 										<label className="active" htmlFor="price">Latitude</label>
 									</div>
-									
+
 									<div className="input-field col s6">
-										<input id="longitude" type="text" value={this.state.listItems[currRef].longitude}></input>
+										<input id="longitude" type="text" value={this.state.listItems[currRef].longitude} onChange={this.changeText} />
 										<label className="active" htmlFor="price">Longitude</label>
 									</div>
+									</div>
 									
-									<div className="input-field col s6">
-										<input id="filters" type="text" value={this.state.listItems[currRef].filters}></input>
+									<div className="row">
+									<div className="input-field col s12">
+										<input id="filters" type="text" value={this.state.listItems[currRef].filters} onChange={this.changeText} />
 										<label className="active" htmlFor="price">Filters</label>
-										
+									</div>
 									</div>
 									
 									<br />
-									<button id="productsubmit" type="submit" disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Save</button>
-									<button onClick={this.hideProduct} disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Cancel</button>
+									<button id="productsubmit" type="submit" onClick={this.hideProduct} disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Save</button>
 								</div>
 								</div>
 							</form>
