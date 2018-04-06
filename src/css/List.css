@@ -18,10 +18,6 @@
 }
 
 
-.card .card-content {
-	padding: 30px;
-}
-
 .chip {
 	margin-left: 5px;
 	margin-right: 5px;
@@ -36,10 +32,6 @@
 	display: block;
    	margin-left: auto;
     	margin-right: auto;
-}
-
-.cardInfo {
-	padding-top: 30px;
 }
 
 
@@ -96,7 +88,7 @@ i {
 	color: black;
 }
 
-#productcover {
+#more-info {
 	background-color: black;
 	width: 100%;
 	height: 100%;

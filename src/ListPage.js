@@ -4,7 +4,6 @@ import $ from 'jquery';
 import './css/List.css';
 import ListItem from './ListItem';
 import firebase from "firebase";
-import FirebaseConfig from "./Config";
 import FileUploader from 'react-firebase-file-uploader'; 
 
 // ListPage Component
@@ -23,7 +22,7 @@ var ListPage = React.createClass({
 				this.setState({listItems:snapshot.val()});
 			}
 		});
-		$('#list').animate({opacity: '1'}, "slow");
+		$('#list').animate({opacity: '1'});
 	},
 	
 	createProduct(event) {
@@ -44,7 +43,7 @@ var ListPage = React.createClass({
 	},
 	
 	showProductInfo(event) {
-		$("#productcover").animate({opacity: 0.7}, 300);
+		$("#more-info").animate({opacity: 0.7}, 300);
 		this.setState({currRefId: event.target.id, showInfo:true});
 	},
 	
@@ -64,7 +63,7 @@ var ListPage = React.createClass({
 	},
 	
 	hideProduct() {
-		$("#productcover").animate({opacity: 0}, 300);
+		$("#more-info").animate({opacity: 0}, 300);
 		this.setState({showInfo:false});
 	},
 	
@@ -97,9 +96,7 @@ var ListPage = React.createClass({
 									<br />
 									<p>{"Rating: " + this.state.listItems[currRef].rating + "/5"}</p>
 									</div>
-									<div className="card-action">
-										<a href="#">More Info</a>
-									</div>
+									
 								</div>
 							</div>
 						: false
@@ -180,7 +177,7 @@ var ListPage = React.createClass({
 					
 				</div>
 				
-				<div id="productcover">
+				<div id="more-info">
 				</div>
 			</div>
 		);

@@ -24,7 +24,7 @@ var HomePage = React.createClass({
 
 		console.log(this.state.aboutUs);
 		
-		$('#home').animate({opacity: '1'}, "slow");
+		$('#home').animate({opacity: '1'});
 		 $('.chips').material_chip();
 		  $('.chips-autocomplete').material_chip({
 			autocompleteOptions: {

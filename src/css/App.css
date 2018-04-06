@@ -1,7 +1,6 @@
 /* App */
-@import url('https://fonts.googleapis.com/css?family=Lobster');
 
-#home, #blog, #store, #about-us {
+#home, #map, #list, #mod {
 	opacity: 0;
 }
 
@@ -22,7 +21,6 @@ body {
 	text-align: left;
 }
 
-
 a.link, .dropdown-button, .content a, .homelink {
 	text-transform: uppercase;
 }
@@ -42,19 +40,20 @@ h5, h6, div {
 	text-align: center;
 }
 
+/* Form colors */
 label.active {
-	color: #BB6B25 !important;
+	color: #6FCF97 !important;
 }
 
 textarea:focus {
-  border-bottom: 1px solid #BB6B25 !important;
+  border-bottom: 1px solid #6FCF97 !important;
 
-  box-shadow: 0 1px 0 0 #BB6B25 !important;
+  box-shadow: 0 1px 0 0 #6FCF97 !important;
 }
 
 input[type=text]:focus:not([readonly]), input[type=email]:focus, input[type=password]:focus{
-	border-bottom: 1px solid #BB6B25 !important;
-    box-shadow: 0 1px 0 0 #BB6B25 !important;
+	border-bottom: 1px solid #6FCF97 !important;
+    box-shadow: 0 1px 0 0 #6FCF97 !important;
 }
 
 

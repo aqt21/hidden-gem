@@ -1,11 +1,9 @@
 // Page of List items to show
-import { Link } from 'react-router';
 import React from 'react';
 import $ from 'jquery';
 import './css/List.css';
 import ListItem from './ListItem';
 import firebase from "firebase";
-import FirebaseConfig from "./Config";
 import FileUploader from 'react-firebase-file-uploader'; 
 import Materialize from "materialize-css";
 
@@ -23,7 +21,7 @@ var ModPage = React.createClass({
 				this.setState({listItems:snapshot.val()});
 			}
 		});
-		$('#list').animate({opacity: '1'}, "slow");
+		$('#mod').animate({opacity: '1'});
 	},
 	
 		
@@ -36,7 +34,7 @@ var ModPage = React.createClass({
 				this.setState({listItems:snapshot.val()});
 			}
 		});
-		$('#list').animate({opacity: '1'}, "slow");
+		$('#mod').animate({opacity: '1'});
 		}
 	},
 	
@@ -57,7 +55,7 @@ var ModPage = React.createClass({
 	},
 	
 	showProductInfo(event) {
-		$("#productcover").animate({opacity: 0.7}, 300);
+		$("#more-info").animate({opacity: 0.7}, 300);
 		this.setState({currRefId: event.target.id, showInfo:true});
 	},
 	
@@ -77,7 +75,7 @@ var ModPage = React.createClass({
 	},
 	
 	hideProduct() {
-		$("#productcover").animate({opacity: 0}, 300);
+		$("#more-info").animate({opacity: 0}, 300);
 		this.setState({showInfo:false});
 	},
 	
@@ -105,7 +103,7 @@ var ModPage = React.createClass({
 		
 		return (
 			<div>
-				<div id='list'>
+				<div id='mod'>
 					<div className='container'>
 						<a className="waves-effect waves-light btn-large" onClick={() => this.handlePending()}>Pending Review</a>
 						<a className="waves-effect waves-light btn-large" onClick={() => this.handleApproved()}>Approved</a>
@@ -210,7 +208,7 @@ var ModPage = React.createClass({
 					
 				</div>
 				
-				<div id="productcover">
+				<div id="more-info">
 				</div>
 			</div>
 		);
