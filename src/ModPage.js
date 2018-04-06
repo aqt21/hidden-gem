@@ -7,7 +7,7 @@ import firebase from "firebase";
 import FirebaseConfig from "./Config";
 import FileUploader from 'react-firebase-file-uploader'; 
 
-// ListPage Component
+// ModPage Component
 var ModPage = React.createClass({
 	getInitialState(){
 		return{listItems:[], fileName:"", isUploading:false, uploadPicUrl:"", currRefId:"", showInfo:false}
@@ -16,7 +16,7 @@ var ModPage = React.createClass({
 	// When component mounts, get the data and set the state of 'listItems'
 	componentDidMount(){
 
-		this.listRef = firebase.database().ref("Locations");
+		this.listRef = firebase.database().ref("Pending Review");
 		
 		this.listRef.on("value", (snapshot)=> {
 			if(snapshot.val()){
@@ -26,7 +26,7 @@ var ModPage = React.createClass({
 		$('#list').animate({opacity: '1'}, "slow");
 	},
 	
-	createProduct(event) {
+	saveChanges(event) {
 		event.preventDefault();
 		
 		this.listRef.push({
@@ -83,92 +83,83 @@ var ModPage = React.createClass({
 					<div className='container'>
 						{(this.state.showInfo ?
 							<div className="card horizontal" id="productinfo">
-								<div id="exitcontainer" onClick={this.hideProduct}>
+							<div id="exitcontainer" onClick={this.hideProduct}>
 									<i className="fa fa-times exit" aria-hidden="true"></i>
-								</div>
+							</div>
+							<form className="col s12 active" onSubmit = {this.saveChanges}>
 								
-								<div className="card-image">
-									<img src={this.state.listItems[currRef].imgurl} />
-								</div>
 								<div className="card-stacked">
-									<div className="card-content">
-									<h2>{this.state.listItems[currRef].title}</h2>
-									<p>{this.state.listItems[currRef].description}</p>
+								<div className="card-content">
+									<div className="card-image">
+										<img src={this.state.listItems[currRef].imgurl} />
+									</div>
+									<div className="input-field col s6">
+										<FileUploader
+											className="file-path validate"
+											id="file-uploader"
+											accept="image/*"
+											randomizeFilename
+											storageRef={firebase.storage().ref("images")}
+											onUploadStart={this.handleUploadStart}
+											onUploadError={this.handleUploadError}
+											onUploadSuccess={this.handleUploadSuccess}
+											onProgress={this.handleProgress}
+										/>
+										<div className="btn waves-effect waves-light"><label id="imagebtn" htmlFor="file-uploader"></label>Change Image</div>
+										
+										{(this.state.isUploading ?
+											<div>
+												<br />
+												<i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+												<span className="sr-only">Loading...</span>
+												<p className="center-align">Uploading image. Please Wait.</p>
+											</div>
+										: [(this.state.fileName ? <p key={this.state.fileName} className="center-align">Finished Uploading {this.state.fileName}</p> : false)]
+										)}							
+									</div>
+									
+									<div className="input-field col s6">
+										<input id="title" type="text" value={this.state.listItems[currRef].title}></input>
+										<label className="active" htmlFor="title">Title</label>
+									</div>
+
+									<div className="input-field col s6" >
+										<textarea className="materialize-textarea" id="description" type="text" value={this.state.listItems[currRef].description}></textarea>
+										<label className="active" htmlFor="description">Description</label>
+									</div>
+									
+									<div className="input-field col s6">
+										<input id="rating" type="text" value={this.state.listItems[currRef].rating}></input>
+										<label className="active" htmlFor="price">Rating</label>
+									</div>
+									
+									<div className="input-field col s6">
+										<input id="latitude" type="text" value={this.state.listItems[currRef].latitude}></input>
+										<label className="active" htmlFor="price">Latitude</label>
+									</div>
+									
+									<div className="input-field col s6">
+										<input id="longitude" type="text" value={this.state.listItems[currRef].longitude}></input>
+										<label className="active" htmlFor="price">Longitude</label>
+									</div>
+									
+									<div className="input-field col s6">
+										<input id="filters" type="text" value={this.state.listItems[currRef].filters}></input>
+										<label className="active" htmlFor="price">Filters</label>
+										
+									</div>
+									
 									<br />
-									<p>{"Rating: " + this.state.listItems[currRef].rating + "/5"}</p>
-									</div>
-									<div className="card-action">
-										<a href="#">More Info</a>
-									</div>
+									<button id="productsubmit" type="submit" disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Save</button>
+									<button onClick={this.hideProduct} disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Cancel</button>
 								</div>
+								</div>
+							</form>
 							</div>
 						: false
 						)}
 						
-						{(this.props.user ?
-						<div className="card-panel">
-							<form className="col s12 active" onSubmit = {this.createProduct}>
-								<div className="input-field col s6">
-									<input id="title" type="text"></input>
-									<label htmlFor="title">Title</label>
-								</div>
-								
-								<div className="input-field col s6" >
-									<textarea className="materialize-textarea" id="description" type="text"></textarea>
-									<label htmlFor="description">Description</label>
-								</div>
-								
-								<div className="input-field col s6">
-									<input id="rating" type="text"></input>
-									<label htmlFor="price">Rating</label>
-								</div>
-								
-								<div className="input-field col s6">
-									<input id="latitude" type="text"></input>
-									<label htmlFor="price">Latitude</label>
-								</div>
-								
-								<div className="input-field col s6">
-									<input id="longitude" type="text"></input>
-									<label htmlFor="price">Longitude</label>
-								</div>
-								
-								<div className="input-field col s6">
-									<input id="filters" type="text"></input>
-									<label htmlFor="price">Filters</label>
-								</div>
-								
-								<div className="input-field col s6">
-									<FileUploader
-										className="file-path validate"
-										id="file-uploader"
-										accept="image/*"
-										randomizeFilename
-										storageRef={firebase.storage().ref("images")}
-										onUploadStart={this.handleUploadStart}
-										onUploadError={this.handleUploadError}
-										onUploadSuccess={this.handleUploadSuccess}
-										onProgress={this.handleProgress}
-									  />
-									<div className="btn waves-effect waves-light"><label id="imagebtn" htmlFor="file-uploader"></label>Upload An Image</div>
-									
-									{(this.state.isUploading ?
-										<div>
-											<br />
-											<i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-											<span className="sr-only">Loading...</span>
-											<p className="center-align">Uploading image. Please Wait.</p>
-										</div>
-									: [(this.state.fileName ? <p key={this.state.fileName} className="center-align">Finished Uploading {this.state.fileName}</p> : false)]
-									)}							
-								</div>
-								
-								<br />
-								<button id="productsubmit" type="submit" disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Post the Hidden Gem</button>
-							</form>
-						</div>
-						: false
-						)}
+
 						
 						<div className="row">
 						{Object.keys(this.state.listItems).map((d) => {
