@@ -13,7 +13,7 @@ var ListItem = React.createClass({
 				<div className="card-content">
 				  <h6 className="cardTitle left-align"><b>{this.props.data.title}</b></h6>
 				  <div className="heart right-align"></div>
-				  <p className="cardInfo left-align">{this.props.data.description.substring(0,75) + " ..."}</p>
+				  <p className="cardInfo left-align">{this.props.data.description.substring(0,100) + " ..."}</p>
 				  <br/>
 				  <p>Rating: {this.props.data.rating}</p>
 				  {(this.props.user ?
