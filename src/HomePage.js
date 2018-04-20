@@ -48,17 +48,19 @@ var HomePage = React.createClass({
 	render() {
 
 		return (
-			<div className='container' id='home'>
-			<form>
-				<div className="input-field">
-				  <input id="search" type="search" required />
-				  <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
+			<div id='home_background'>
+				<div className='container'  id='home'>
+				<form>
+					<div className="input-field">
+					  <input id="search" type="search" required />
+					  <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
 
-				  <i className="material-icons">close</i>
+					  <i className="material-icons">close</i>
+					</div>
+				</form>
+				<div className="chips chips-autocomplete"></div>
+
 				</div>
-			  </form>
-			<div className="chips chips-autocomplete"></div>
-
 			</div>
 		);
 	}

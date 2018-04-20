@@ -9,7 +9,11 @@
 	transform: translate(-50%, -50%);
 	background: transparent;
 	border-radius: 5px;
+}
 
+#home_background {
+	height: 1000px;
+	background-image: url(../../imgs/Hurricane.jpg);
 }
 
 .input-field{
@@ -63,9 +67,9 @@
 	margin-bottom: 60px;
 }
 
-body {
-	background-image: url(../../imgs/Hurricane.jpg);
-}
+/* body { */
+	/* background-image: url(../../imgs/Hurricane.jpg); */
+/* } */
 
 
 @media (min-width: 768px) {
