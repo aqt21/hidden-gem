@@ -1,19 +1,102 @@
 /* Home Page */
 
 body {
-	background-image: url(../../imgs/Hurricane.jpg);
+		background-image: url(../../imgs/Hurricane.jpg);
 }
+
+
 
 #home{
 	padding:30px;
-	width:100%;
-	margin:0 auto;
+	width:500px;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	background: transparent;
+	border-radius: 5px;
+
 }
 
+.input-field{
+	background-color: white;
+	border-radius: 5px;
+}
+
+.material-icons{
+	background-color: #6FCF97;
+}
+
+.chips.chips-autocomplete {
+	background-color: white;
+	border-radius: 5px;
+}
+
+.homelink{
+	border: 2px solid white;
+	padding: 6px;
+	color: white;
+	text-decoration: none;
+	font-size: 1.1em;
+	margin:10px auto;
+}
+
+.home-item, .about-item{
+	width:96%;
+	padding: 20px 16px;
+	background-color: #784212;
+	margin: 10px auto;
+	position:relative;
+}
+
+#home i{
+	margin-bottom: 20px;
+	color: white;
+}
+
+.hometext{
+	color: #FDEBD0;
+	font-family: Roboto;
+	margin-bottom: 60px;
+}
+
+
+
 @media (min-width: 768px) {
+	.home-item .card-panel{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.home-item, .about-item{
+	width:75%;
+	padding: 40px;
+	background-color: #784212;
+	margin: 30px auto;
+	position:relative;
+	}
+
+	.homelink{
+		padding: 16px;
+		font-size: 1.5em;
+		margin:30px auto;
+	}
 
 }
 
 @media (min-width: 992px) {
+	
+	.home-item .card-panel{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.home-item, .about-item{
+		width:68%;
+		padding: 80px;
+		background-color: #784212;
+		margin: 30px auto;
+		position:relative;
+	}
 
 }
