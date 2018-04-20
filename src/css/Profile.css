@@ -9,12 +9,21 @@
 
 }
 
-
+.newbackground {
+	height: 715px;
+	background-color: lightgray;
+}
 
 #profile-header{
 	height: 200px;
+	border-radius: 5px;
+	text-align: center;
 }
 
+#name {
+	text-align: left;
+	margin-left: 20%;
+}
 
 #favorites {
 	display: inline-block;

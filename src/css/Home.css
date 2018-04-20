@@ -1,11 +1,5 @@
 /* Home Page */
 
-body {
-		background-image: url(../../imgs/Hurricane.jpg);
-}
-
-
-
 #home{
 	padding:30px;
 	width:500px;
@@ -25,10 +19,19 @@ body {
 
 .material-icons{
 	background-color: #6FCF97;
+	border-radius: 5px;
+	margin-right: -15px;
+	padding-left: 1%;
+	padding-right: 1%;
 }
 
 .chips.chips-autocomplete {
 	background-color: white;
+	border-radius: 5px;
+	text-align: left;
+}
+
+#search {
 	border-radius: 5px;
 }
 
@@ -60,6 +63,9 @@ body {
 	margin-bottom: 60px;
 }
 
+body {
+	background-image: url(../../imgs/Hurricane.jpg);
+}
 
 
 @media (min-width: 768px) {
