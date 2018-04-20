@@ -49,7 +49,7 @@ var HomePage = React.createClass({
 
 		return (
 			<div id='home_background'>
-				<div className='container'  id='home'>
+				<div className='container' id='home'>
 				<form>
 					<div className="input-field">
 					  <input id="search" type="search" required />

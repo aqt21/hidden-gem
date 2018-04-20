@@ -35,9 +35,9 @@ nav ul a:hover, nav ul li.active {
     background-color: #529a70 !important;
 }
 
-h5, h6, div {
+h5, div {
 	font-family: Roboto, 'Century Gothic', 'Comic Sans';
-	text-align: center;
+	/* text-align: center; */
 }
 
 /* Form colors */
