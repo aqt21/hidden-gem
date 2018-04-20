@@ -30,11 +30,15 @@ var ProfilePage = React.createClass({
 	render() {
 
 		return (
+			<div className='newbackground'>
 			<div className='container' id='profile'>
-				<div id='profile-header'> User Information </div>
+				<div id='profile-header'>
+				<div id='name'> Name </div>
+				</div>
 				<div id='favorites'> Favorite Gems </div>
 				<div id='saved'> Saved Gems </div>
 				
+			</div>
 			</div>
 		);
 	}
