@@ -1,14 +1,27 @@
 /* Home Page */
+Autocomplete {
+	color: white;
+}
+
+#homeBtn {
+	margin-top:20px;
+}
+
+#homeWrapper {
+	display: flex;
+  justify-content: center;
+}
 
 #home{
 	padding:30px;
-	width: 1000px;
+	width: 800px;
 	top: 50%;
 	left: 50%;
 	position: absolute;
 	transform: translate(-50%, -50%);
 	background: transparent;
 	border-radius: 5px;
+	
 }
 
 #homeIcon {
@@ -37,6 +50,7 @@
 .input-field{
 	background-color: white;
 	border-radius: 5px;
+	padding: 5px;
 }
 
 .material-icons{
