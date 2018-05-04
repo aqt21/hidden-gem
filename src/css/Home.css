@@ -1,14 +1,27 @@
 /* Home Page */
+Autocomplete {
+	color: white;
+}
+
+#homeBtn {
+	margin-top:20px;
+}
+
+#homeWrapper {
+	display: flex;
+  justify-content: center;
+}
 
 #search-box{
 	padding:30px;
-	width:500px;
+	width: 800px;
 	top: 50%;
 	left: 50%;
 	position: absolute;
 	transform: translate(-50%, -50%);
 	background: transparent;
 	border-radius: 5px;
+	
 }
 
 #home {
@@ -16,9 +29,28 @@
 	background-image: url(../../imgs/Hurricane.jpg);
 }
 
+#homeIcon {
+	height: 80px;
+	padding-bottom: 0px;
+	width: 100px;
+}
+
+#homeHeader, #homeDescription {
+	color: white;
+	text-align: center;
+}
+
+#homeHeader {
+	margin-bottom: 0px;
+}
+
+#homeDescription {
+	font-size: 20px;
+}
 .input-field{
 	background-color: white;
 	border-radius: 5px;
+	padding: 5px;
 }
 
 .material-icons{

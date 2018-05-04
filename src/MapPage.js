@@ -32,6 +32,12 @@ var MapPage = React.createClass({
 		$("#" + key + "marker").padding = "15px"
 	},
 	
+	getCookie(name) {
+	  var value = "; " + document.cookie;
+	  var parts = value.split("; " + name + "=");
+	  if (parts.length == 2) return parts.pop().split(";").shift();
+	},
+	
 	// Render a <MapItem> element for each element in the state
 	render() {
 		const { compose, withProps, withStateHandlers } = require("recompose");
@@ -56,8 +62,8 @@ var MapPage = React.createClass({
 		  withGoogleMap
 		)(props =>
 		  <GoogleMap
-			defaultZoom={8}
-			defaultCenter={{ lat: 47, lng: -122 }}
+			defaultZoom={12}
+			defaultCenter={{ lat: parseFloat(this.getCookie("lat")), lng: parseFloat(this.getCookie("lng"))}}
 		  >
 		  {Object.keys(this.state.mapItems).map((d) => {
 			return (<Marker

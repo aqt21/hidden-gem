@@ -17,6 +17,7 @@
     "react-fontawesome": "^1.6.1",
     "react-tap-event-plugin": "^3.0.2",
     "react-firebase-file-uploader": "^2.4.1",
+    "react-google-autocomplete": "^1.0.15",
     "materialize-css": "^0.100.2",
     "material-icons": "^0.1.0",
     "opn": "^5.2.0",
