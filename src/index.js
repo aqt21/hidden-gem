@@ -10,6 +10,7 @@ import ModPage from './ModPage';
 import ProfilePage from './ProfilePage';
 import SignUpPage from './SignUpPage';
 import SignInPage from './SignInPage';
+import AboutPage from './AboutPage';
 
 // Render DOM
 ReactDOM.render(
@@ -23,6 +24,7 @@ ReactDOM.render(
 				<Route path='sign-up' component={SignUpPage}/>
 				<Route path='sign-in' component={SignInPage}/>
 				<Route path='mod' component={ModPage}/>
+				<Route path='about' component={AboutPage}/>
             </Route>
         </Router>,
   document.getElementById('root')
