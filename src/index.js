@@ -24,7 +24,7 @@ ReactDOM.render(
 				<Route path='sign-up' component={SignUpPage}/>
 				<Route path='sign-in' component={SignInPage}/>
 				<Route path='mod' component={ModPage}/>
-				<Route path='about' component={AboutPage}/>
+				<Route path='about-us' component={AboutPage}/>
             </Route>
         </Router>,
   document.getElementById('root')

@@ -72,7 +72,6 @@ var App = React.createClass({
 							  <li><Link className='link' activeClassName='active' to='/map'>Map</Link></li>
 							  <li><Link className='link' activeClassName='active' to='/list'>List</Link></li>
 							   <li><Link className='link' activeClassName='active' to='/mod'>Mod</Link></li>
-							   <li><Link className='link' activeClassName='active' to='/about'>About Us</Link></li>
 							  <li><a className="dropdown-button" href="#!" data-activates="dropdown1"><i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></a></li>
 							</ul>
 						  </div>
@@ -95,7 +94,7 @@ var App = React.createClass({
 								<div className="col l4 offset-l2 s12">
 									<h5 className="white-text">Links</h5>
 									<ul>
-										<li><a className="grey-text text-lighten-3" href="#!">About Us</a></li>
+										<li><Link className="grey-text text-lighten-3" activeClassName='active' to='/about-us'>About Us</Link></li>
 
 									</ul>
 								</div>

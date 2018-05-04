@@ -23,13 +23,14 @@ var HomePage = React.createClass({
 				this.setState({aboutUs:snapshot.val()});
 			}
 		});
-
+		
+		$('#about').animate({opacity: '1'});
 	},
 	// Render a <HomeItem> element
 	render() {
 
 		return (
-	
+			<div id='about'>
 				<div className='container'>
 					<div id="problem">
 						<h2> The Problem </h2>
@@ -117,7 +118,7 @@ var HomePage = React.createClass({
 					</div>
 					
 				</div>
-
+			</div>
 		);
 	}
 });
