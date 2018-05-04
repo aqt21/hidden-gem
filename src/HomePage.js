@@ -61,9 +61,8 @@ var HomePage = React.createClass({
 	render() {
 
 		return (
-			<div id='home_background'>
-				
-				<div className='container' id='home'>
+			<div id='home'>	
+				<div className='container' id='search-box'>
 					<h1 id="homeHeader"> Hidden <img id="homeIcon" src={require("../imgs/gemicon-w.png")}></img> Gem </h1>
 					<p id="homeDescription"> Discover your backyard </p>
 					
@@ -87,7 +86,6 @@ var HomePage = React.createClass({
 							<a className="waves-effect waves-light btn" id="homeBtn" ><Link className='link' activeClassName='active' to='map'>Find your Hidden Gems</Link></a>
 						</div>
 					</form>
-					
 				</div>
 			</div>
 		);

@@ -1,13 +1,5 @@
 /* List Page */
 
-#list {
-	margin-top: 40px;
-}
-
-.buybtn:hover{
-	cursor: pointer;
-}
-
 .clickable {
 	height: 100%;
 	width: 100%;
@@ -15,8 +7,14 @@
 	z-index: 10;
 }
 
-#cardimg {
+.card {
+	height: 400px;
+}
+
+.card-image {
+	width: 100%;
 	height: 200px;
+	background-size: cover;
 }
 
 .chip {
@@ -29,34 +27,28 @@
 	margin: 5px;
 }
 
-.card-image {
-	display: block;
-   	margin-left: auto;
-    margin-right: auto;
-}
-
 #exitcontainer{
 	margin: 20px;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	right: 0;
-	z-index: 900;
+	z-index: 30;
 }
 
-.cardTitle {
-	display: inline-block;
-	float: left;
-	padding-left: 5px;
-	/* font-family: "Open Sans"; */
-	font-size: 16px;
+/* .cardTitle { */
+	/* display: inline-block; */
+	/* float: left; */
+	/* padding-left: 5px; */
+	/* /* font-family: "Open Sans"; */ */
+	/* font-size: 16px; */
 
-}
+/* } */
 
 
-.cardInfo.left-align {
-	display: inline-block;
-	margin-top: 10%;
-}
+/* .cardInfo.left-align { */
+	/* display: inline-block; */
+	/* margin-top: 10%; */
+/* } */
 
 #exitcontainer > label {
     font-size: 1.25em;
@@ -86,7 +78,7 @@ p {
 	position: absolute;
 	top: 215px;
 	left: 90%;
-	z-index: 900;
+	z-index: 30;
 	color:red;
 }
 
@@ -107,23 +99,27 @@ i {
 	top: 0;
 	left: 0;
 	position: fixed;
-	z-index: 500;
+	z-index: 20;
 }
 
 #locationDetails {
-	margin: 30px;
-	padding: 15 px;
-
+	background: white;
+	padding: 50px;
 	position: fixed;
-    	left: 50%;
-    	top: 50%;
-    	transform: translate(-50%, -50%);
-	z-index: 999;
+	top: 50px;
+	left: 50px;
+	right: 50px;
+	bottom: 50px;
+	z-index: 40;
+	overflow: scroll;
 }
 
-.stackedCardTitle {
-	padding-top: 10px !important;
+
+#locationImage img {
+	max-height: 100%;
+	max-width: 100%;
 }
+
 
 .submit {
 	z-index: 0;

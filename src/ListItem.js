@@ -11,8 +11,8 @@ var ListItem = React.createClass({
 			<div className="col s12 m6 l4">
 			  <div className="card hoverable">
 			  <div className="clickable" onClick={this.props.handleClick} id={this.props.productRef}></div>
-				<div className="card-image">
-				  <img id="cardimg" src={this.props.data.imgurl} />
+				<div className="card-image" style={{ backgroundImage: `url(${this.props.data.imgurl})` }}>
+				 
 				</div>
 				<div className="card-content">
 					<span className="card-title">{this.props.data.title}</span>

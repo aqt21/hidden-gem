@@ -1,5 +1,5 @@
 
-#profile {
+#profile-container {
 	display: block;
 	width: 900px;
     border-radius: 5px;
@@ -7,10 +7,6 @@
 	background-color: white;
 	transform: translate(0, 10%);
 
-}
-
-.newbackground {
-	background-color: #F2F2F2;
 }
 
 #profile-header{
