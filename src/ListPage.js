@@ -43,7 +43,8 @@ var ListPage = React.createClass({
 	},
 	
 	showProductInfo(event) {
-		$("#more-info").animate({opacity: 0.7}, 300);
+		$("#locationDetailsBackground").css("pointer-events","auto");
+		$("#locationDetailsBackground").animate({opacity: 0.7}, 300);
 		this.setState({currRefId: event.target.id, showInfo:true});
 	},
 	
@@ -63,7 +64,8 @@ var ListPage = React.createClass({
 	},
 	
 	hideProduct() {
-		$("#more-info").animate({opacity: 0}, 300);
+		$("#locationDetailsBackground").css("pointer-events","none");
+		$("#locationDetailsBackground").animate({opacity: 0}, 300);
 		this.setState({showInfo:false});
 	},
 	
@@ -81,7 +83,7 @@ var ListPage = React.createClass({
 				<div id='list'>
 					<div className='container'>
 						{(this.state.showInfo ?
-							<div className="card horizontal" id="productinfo">
+							<div className="card horizontal" id="locationDetails">
 								<div id="exitcontainer" onClick={this.hideProduct}>
 									<i className="fa fa-times exit" aria-hidden="true"></i>
 								</div>
@@ -166,8 +168,7 @@ var ListPage = React.createClass({
 					
 				</div>
 				
-				<div id="more-info">
-				</div>
+				<div id="locationDetailsBackground" onClick={this.hideProduct}></div>
 			</div>
 		);
 	}

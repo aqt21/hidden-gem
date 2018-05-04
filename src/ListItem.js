@@ -1,13 +1,16 @@
 import React from 'react';
+import $ from 'jquery';
 
 // Returns a list item containing the experience, position I held, date, and description.
 var ListItem = React.createClass({
+
+	
     render() {
 		console.log(this.props.data)
 		return(
-		
 			<div className="col s12 m6 l4">
-			  <div className="card">
+			  <div className="card hoverable">
+			  <div className="clickable" onClick={this.props.handleClick} id={this.props.productRef}></div>
 				<div className="card-image">
 				  <img id="cardimg" src={this.props.data.imgurl} />
 				</div>
