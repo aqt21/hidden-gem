@@ -64,15 +64,17 @@ var App = React.createClass({
 							}
 
 						</ul>
+						
+						
 						<nav>
 						  <div className="nav-wrapper">
-							<a href="#!" className="brand-logo">Logo</a>
+							<a href="#!" className="brand-logo"><img id="navIcon" src={require("../imgs/gemicon-w.png")}></img></a>
 							<ul className="right hide-on-med-and-down">
 							  <li><Link className='link' activeClassName='active' to='/home'>Home</Link></li>
 							  <li><Link className='link' activeClassName='active' to='/map'>Map</Link></li>
 							  <li><Link className='link' activeClassName='active' to='/list'>List</Link></li>
 							   <li><Link className='link' activeClassName='active' to='/mod'>Mod</Link></li>
-							  <li><a className="dropdown-button" href="#!" data-activates="dropdown1"><i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></a></li>
+							  <li><a className="dropdown-button" data-activates="dropdown1"><i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></a></li>
 							</ul>
 						  </div>
 						</nav>

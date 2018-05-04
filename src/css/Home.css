@@ -71,32 +71,9 @@ Autocomplete {
 	border-radius: 5px;
 }
 
-.homelink{
-	border: 2px solid white;
-	padding: 6px;
-	color: white;
-	text-decoration: none;
-	font-size: 1.1em;
-	margin:10px auto;
-}
-
-.home-item, .about-item{
-	width:96%;
-	padding: 20px 16px;
-	background-color: #784212;
-	margin: 10px auto;
-	position:relative;
-}
-
 #home i{
 	margin-bottom: 20px;
 	color: white;
-}
-
-.hometext{
-	color: #FDEBD0;
-	font-family: Roboto;
-	margin-bottom: 60px;
 }
 
 /* body { */

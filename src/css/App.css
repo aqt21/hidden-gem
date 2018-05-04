@@ -13,6 +13,8 @@ footer.page-footer {
 	margin: 0 !important;
 }
 
+.children {
+}
 
 .children, #signin .row {
 	margin: 0;
@@ -24,14 +26,14 @@ body {
 	background-color: #F2F2F2;
 }
 
-#nav {
+div#nav {
 	position: sticky;
 	top: 0;
 	z-index: 15;
 }
 
 a.dropdown-button {
-	overflow: hidden;
+	
 }
 
 .nav-wrapper, footer, .btn {
@@ -41,6 +43,12 @@ a.dropdown-button {
 .nav-wrapper {
 	padding: 0 0 0 30px;
 	text-align: left;
+}
+
+#navIcon {
+
+	max-height: 50px;
+	vertical-align: middle;
 }
 
 a.link, .dropdown-button, .content a, .homelink {
@@ -54,7 +62,7 @@ a.link {
 
 
 nav ul a:hover, nav ul li.active {
-    background-color: #529a70 !important;
+    background-color: #57a578 !important;
 }
 
 h5, div {
@@ -104,7 +112,7 @@ input[type=text]:focus:not([readonly]), input[type=email]:focus, input[type=pass
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #6FCF97; 
+    background: #57a578; 
 }
 
 

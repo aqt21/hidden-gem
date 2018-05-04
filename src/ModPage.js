@@ -6,6 +6,7 @@ import ListItem from './ListItem';
 import firebase from "firebase";
 import FileUploader from 'react-firebase-file-uploader'; 
 import Materialize from "materialize-css";
+import M from "react-materialize";
 
 // ModPage Component
 var ModPage = React.createClass({
@@ -23,8 +24,6 @@ var ModPage = React.createClass({
 		});
 		$('#mod').animate({opacity: '1'});
 	},
-	
-		
 		
 	componentDidUpdate(prevProps, prevState) {
 		if(prevState.currTab != this.state.currTab){
@@ -59,21 +58,6 @@ var ModPage = React.createClass({
 		this.setState({currRefId: event.target.id, showInfo:true});
 	},
 	
-	handleUploadStart(){
-		this.setState({isUploading: true, fileName: $("#file-uploader").val().split('\\').pop()});
-	},
-	
-	handleUploadError(error){
-	  this.setState({isUploading: false});
-	  console.error(error);
-	},
-	
-	handleUploadSuccess(filename){
-	  this.setState({avatar: filename, isUploading: false});
-	  firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({uploadPicUrl: url}));
-
-	},
-	
 	hideProduct() {
 		$("#locationDetailsBackground").animate({opacity: 0}, 300);
 		this.setState({showInfo:false});
@@ -91,9 +75,8 @@ var ModPage = React.createClass({
 	removeProduct(event) {
 		this.listRef.child(event.target.id).remove();
 	},
-	
 	changeText(event){
-		Materialize.updateTextFields();       
+		M.updateTextFields();
     },
 	
 	// Render a <ListItem> element for each element in the state
@@ -105,47 +88,21 @@ var ModPage = React.createClass({
 			<div>
 				<div id='mod'>
 					<div className='container'>
-						<a className="waves-effect waves-light btn-large" onClick={() => this.handlePending()}>Pending Review</a>
-						<a className="waves-effect waves-light btn-large" onClick={() => this.handleApproved()}>Approved</a>
-						<a className="waves-effect waves-light btn-large" onClick={() => this.handleDiscarded()}>Discarded</a>
-						{(this.state.showInfo ?
-							<div className="card horizontal" id="locationDetails">
-							<div id="exitcontainer" onClick={this.hideProduct}>
+						<div id="modControls">
+							<a className="waves-effect waves-light btn-large" onClick={() => this.handlePending()}>Pending Review</a>
+							<a className="waves-effect waves-light btn-large" onClick={() => this.handleApproved()}>Approved</a>
+							<a className="waves-effect waves-light btn-large" onClick={() => this.handleDiscarded()}>Discarded</a>
+						</div>
+							{(this.state.showInfo ?
+							<div id="locationDetails">
+								<div id="exitcontainer" onClick={this.hideProduct}>
 									<i className="fa fa-times exit" aria-hidden="true"></i>
-							</div>
-							<form className="col s12" onSubmit = {this.saveChanges}>
-								
-								<div className="card-stacked">
-								<div className="card-content">
-									<div className="card-image">
+								</div>
+								<form className="col s12" onSubmit={this.saveChanges}>
+									<div className="locationImage">
 										<img src={this.state.listItems[currRef].imgurl} />
 									</div>
-									<div className="input-field col s12">
-										<FileUploader
-											className="file-path validate"
-											id="file-uploader"
-											accept="image/*"
-											randomizeFilename
-											storageRef={firebase.storage().ref("images")}
-											onUploadStart={this.handleUploadStart}
-											onUploadError={this.handleUploadError}
-											onUploadSuccess={this.handleUploadSuccess}
-											onProgress={this.handleProgress}
-										/>
-										<div className="btn waves-effect waves-light"><label id="imagebtn" htmlFor="file-uploader"></label>Change Image</div>
 										
-										{(this.state.isUploading ?
-											<div>
-												<br />
-												<i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-												<span className="sr-only">Loading...</span>
-												<p className="center-align">Uploading image. Please Wait.</p>
-											</div>
-										: [(this.state.fileName ? <p key={this.state.fileName} className="center-align">Finished Uploading {this.state.fileName}</p> : false)]
-										)}							
-									</div>
-									
-									 <br/>
 									<div className="row">
 									<div className="input-field col s12">
 										<input value={this.state.listItems[currRef].title} id="title" type="text" onChange={this.changeText} />
@@ -158,13 +115,6 @@ var ModPage = React.createClass({
 									<div className="input-field col s12" >
 										<textarea className="materialize-textarea" id="description" type="text" value={this.state.listItems[currRef].description} onChange={this.changeText} />
 										<label className="active" htmlFor="description">Description</label>
-									</div>
-									</div>
-									
-									<div className="row">
-									<div className="input-field col s12">
-										<input id="rating" type="text" value={this.state.listItems[currRef].rating} onChange={this.changeText} />
-										<label className="active" htmlFor="price">Rating</label>
 									</div>
 									</div>
 									
@@ -189,9 +139,7 @@ var ModPage = React.createClass({
 									
 									<br />
 									<button id="productsubmit" type="submit" onClick={this.hideProduct} disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Save</button>
-								</div>
-								</div>
-							</form>
+								</form>
 							</div>
 						: false
 						)}
