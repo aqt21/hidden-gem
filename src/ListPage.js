@@ -79,97 +79,87 @@ var ListPage = React.createClass({
 		let currRef = this.state.currRefId;
 		
 		return (
-			<div>
-				<div id='list'>
-					<div className='container'>
-						{(this.state.showInfo ?
-							<div className="card horizontal" id="locationDetails">
-								<div id="exitcontainer" onClick={this.hideProduct}>
-									<i className="fa fa-times exit" aria-hidden="true"></i>
-								</div>
-								
-								<div className="card-image">
-									<img src={this.state.listItems[currRef].imgurl} />
-								</div>
-								<div className="card-stacked">
-									<div className="card-content">
-									<h4 className="stackedCardTitle"><b>{this.state.listItems[currRef].title}</b></h4>
-									<p>{this.state.listItems[currRef].description}</p>
-									<br />
-									<p>{"Rating: " + this.state.listItems[currRef].rating + "/5"}</p>
-									<br />
-									<p className="chip">Tag Example</p>
-									<p className="chip">Tag Example</p>
-									<p className="chip">Tag Example</p>
-									</div>
-									
-								</div>
+			<div id='list'>
+				<div className='container' id="list-container">
+					{(this.state.showInfo ?
+						<div id="locationDetails">
+							<div id="exitcontainer" onClick={this.hideProduct}>
+								<i className="fa fa-times exit" aria-hidden="true"></i>
 							</div>
-						: false
-						)}
-						
-						{(this.props.user ?
-						<div className="card-panel">
-							<form className="col s12 active" onSubmit = {this.createProduct}>
-								<div className="input-field col s6">
-									<input id="title" type="text"></input>
-									<label htmlFor="title">Product Title</label>
-								</div>
-								
-								<div className="input-field col s6" >
-									<textarea className="materialize-textarea" id="description" type="text"></textarea>
-									<label htmlFor="description">Product Description</label>
-								</div>
-								
-								<div className="input-field col s6">
-									<input id="price" type="text"></input>
-									<label htmlFor="price">Product Price</label>
-								</div>
-								
-								<div className="input-field col s6">
-									<FileUploader
-										className="file-path validate"
-										id="file-uploader"
-										accept="image/*"
-										randomizeFilename
-										storageRef={firebase.storage().ref("images")}
-										onUploadStart={this.handleUploadStart}
-										onUploadError={this.handleUploadError}
-										onUploadSuccess={this.handleUploadSuccess}
-										onProgress={this.handleProgress}
-									  />
-									<div className="btn waves-effect waves-light"><label id="imagebtn" htmlFor="file-uploader"></label>Upload An Image</div>
-									
-									{(this.state.isUploading ?
-										<div>
-											<br />
-											<i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-											<span className="sr-only">Loading...</span>
-											<p className="center-align">Uploading image. Please Wait.</p>
-										</div>
-									: [(this.state.fileName ? <p key={this.state.fileName} className="center-align">Finished Uploading {this.state.fileName}</p> : false)]
-									)}							
-								</div>
-								
-								<br />
-								<button id="productsubmit" type="submit" disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Post Product For Sale</button>
-							</form>
+							<div id="locationImage">
+								<img src={this.state.listItems[currRef].imgurl} />
+							</div>
+
+							<h4>{this.state.listItems[currRef].title}</h4>
+							<p>{this.state.listItems[currRef].description}</p>
+							<p className="chip">Tag Example</p>
+							<p className="chip">Tag Example</p>
+							<p className="chip">Tag Example</p>
 						</div>
-						: false
-						)}
 						
-						<div className="row">
-						{Object.keys(this.state.listItems).map((d) => {
-								return <ListItem user={this.props.user} key={d} productRef={d} data={this.state.listItems[d]} handleTrash={this.removeProduct} handleClick={this.showProductInfo}/>
-							})}
-						</div>
+					: false
+					)}
+					
+					{(this.props.user ?
+					<div className="card-panel">
+						<form className="col s12 active" onSubmit = {this.createProduct}>
+							<div className="input-field col s6">
+								<input id="title" type="text"></input>
+								<label htmlFor="title">Product Title</label>
+							</div>
+							
+							<div className="input-field col s6" >
+								<textarea className="materialize-textarea" id="description" type="text"></textarea>
+								<label htmlFor="description">Product Description</label>
+							</div>
+							
+							<div className="input-field col s6">
+								<input id="price" type="text"></input>
+								<label htmlFor="price">Product Price</label>
+							</div>
+							
+							<div className="input-field col s6">
+								<FileUploader
+									className="file-path validate"
+									id="file-uploader"
+									accept="image/*"
+									randomizeFilename
+									storageRef={firebase.storage().ref("images")}
+									onUploadStart={this.handleUploadStart}
+									onUploadError={this.handleUploadError}
+									onUploadSuccess={this.handleUploadSuccess}
+									onProgress={this.handleProgress}
+								  />
+								<div className="btn waves-effect waves-light"><label id="imagebtn" htmlFor="file-uploader"></label>Upload An Image</div>
+								
+								{(this.state.isUploading ?
+									<div>
+										<br />
+										<i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+										<span className="sr-only">Loading...</span>
+										<p className="center-align">Uploading image. Please Wait.</p>
+									</div>
+								: [(this.state.fileName ? <p key={this.state.fileName} className="center-align">Finished Uploading {this.state.fileName}</p> : false)]
+								)}							
+							</div>
+							
+							<br />
+							<button id="productsubmit" type="submit" disabled={this.state.isUploading} className="submit btn waves-effect waves-light" name="action">Post Product For Sale</button>
+						</form>
 					</div>
+					: false
+					)}
 					
-					
+					<div className="row">
+					{Object.keys(this.state.listItems).map((d) => {
+							return <ListItem user={this.props.user} key={d} productRef={d} data={this.state.listItems[d]} handleTrash={this.removeProduct} handleClick={this.showProductInfo}/>
+						})}
+					</div>
 				</div>
 				
 				<div id="locationDetailsBackground" onClick={this.hideProduct}></div>
 			</div>
+				
 		);
 	}
 });

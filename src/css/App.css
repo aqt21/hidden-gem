@@ -1,15 +1,37 @@
 /* App */
 
-#home, #map, #list, #mod {
+#home, #map, #list, #mod, #profile {
 	opacity: 0;
 }
+
+#home, #map, #mod, #profile {
+	/* margin-top: 64px; */
+	height: 100vmin;
+}
+
+footer.page-footer {
+	margin: 0 !important;
+}
+
 
 .children, #signin .row {
 	margin: 0;
 }
 
+
+
 body {
 	background-color: #F2F2F2;
+}
+
+#nav {
+	position: sticky;
+	top: 0;
+	z-index: 15;
+}
+
+a.dropdown-button {
+	overflow: hidden;
 }
 
 .nav-wrapper, footer, .btn {
@@ -63,6 +85,26 @@ input[type=text]:focus:not([readonly]), input[type=email]:focus, input[type=pass
 
 #signin-button {
 	margin-left: 5px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: transparent; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #6FCF97;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #6FCF97; 
 }
 
 

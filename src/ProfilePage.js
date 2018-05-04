@@ -30,8 +30,8 @@ var ProfilePage = React.createClass({
 	render() {
 
 		return (
-			<div className='newbackground'>
-			<div className='container' id='profile'>
+			<div id='profile'>
+			<div className='container' id='profile-container'>
 				<div id='profile-header'>
 				<div id='name'> Name </div>
 				</div>

@@ -1,6 +1,6 @@
 /* Home Page */
 
-#home{
+#search-box{
 	padding:30px;
 	width:500px;
 	top: 50%;
@@ -11,8 +11,8 @@
 	border-radius: 5px;
 }
 
-#home_background {
-	height: 1000px;
+#home {
+	background-size: cover;
 	background-image: url(../../imgs/Hurricane.jpg);
 }
 
